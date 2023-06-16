@@ -37,7 +37,7 @@ class UsbCon():
         if idProduct is None or idVendor is None:
             for dev in usbtmc.list_devices():
                 print("1: {} - {}".format(dev.manufacturer, dev.product))
-            dev_con = raw_input("Enter the number of the device you want to connect to: ")
+            dev_con = input("Enter the number of the device you want to connect to: ")
             dev_chosen = usbtmc.list_devices()[int(dev_con) - 1]
             product_id = dev_chosen.idProduct
             vendor_id = dev_chosen.idVendor
