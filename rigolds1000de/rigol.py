@@ -12,7 +12,7 @@ sources I used
 - http://www.cibomahto.com/2010/04/controlling-a-rigol-oscilloscope-using-linux-and-python/
 """
 from __future__ import division
-import usbcon as uc
+from .usbcon import UsbCon
 import numpy as np
 import ast
 try:
@@ -44,7 +44,7 @@ class Rigol:
             to query the volt scale/offset or time scale/offset.
         """
         if backend == "usbtmc":
-            self.dev = uc.UsbCon(idProduct=idProduct, idVendor=idVendor)
+            self.dev = UsbCon(idProduct=idProduct, idVendor=idVendor)
         else:
             raise InvalidBackendException("Please specify a valid backend such as {}".format(self.backends))
         delay = True if self.askTimebaseMode() == "DEL" else False
