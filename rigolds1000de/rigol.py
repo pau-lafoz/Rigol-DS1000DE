@@ -1302,9 +1302,6 @@ class Rigol:
         if source not in valid_sources:
             raise InvalidArgument("Source argument must be one of {}".format(valid_sources))
         msg = ":WAV:DATA? {}".format(source)
-        # self.dev.read()
-        # self.dev.write(msg)
-        # return self.dev.read_raw()
         return self.dev.ask_raw(msg)[10:]
 
     # WAVEFORM 2
