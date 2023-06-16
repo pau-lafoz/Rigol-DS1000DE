@@ -47,6 +47,12 @@ class UsbCon():
         instr = usbtmc.Instrument(vendor_id, product_id)
         return instr
 
+    def close(self):
+        """
+        Closes the current connection
+        """
+        self.instr.close()
+
     def read(self, num=-1, encoding="utf-8"):
         """
         Wrapping around the read method in usbtmc.Instrument

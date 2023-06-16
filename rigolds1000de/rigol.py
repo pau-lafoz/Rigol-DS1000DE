@@ -55,6 +55,13 @@ class Rigol:
         self.time_scale = self.askTimebaseScale(delayed=delay)
         self.time_offset = self.askTimebaseOffset(delayed=delay)
 
+    def close(self):
+        """
+        Closes the current connection. Before doing so, it releases the device to let the user work again, otherwise will remain blocked.
+        """
+        self.keyLock(enable = False)
+        self.dev.close()
+
     def identify(self):
         return self.dev.ask("*IDN?")
 
