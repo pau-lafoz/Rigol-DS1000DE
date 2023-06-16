@@ -41,10 +41,9 @@ class UsbCon():
             dev_chosen = usbtmc.list_devices()[int(dev_con) - 1]
             product_id = dev_chosen.idProduct
             vendor_id = dev_chosen.idVendor
-        for dev in usbtmc.list_devices():
-            if dev.idProduct == product_id and dev.idVendor == vendor_id:
-                if dev.is_kernel_driver_active(0):
-                    dev.detach_kernel_driver(0)
+        else :
+            product_id = idProduct
+            vendor_id = idVendor
         instr = usbtmc.Instrument(vendor_id, product_id)
         return instr
 
