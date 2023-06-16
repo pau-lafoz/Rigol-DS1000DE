@@ -1099,7 +1099,8 @@ class Rigol:
         """
         if channel not in [1, 2]:
             raise InvalidArgument("Channel must take a value from {}.".format([1, 2]))
-        self.dev.write(":CHAN{}:DISP?".format(channel))
+        msg = ":CHAN{}:DISP?".format(channel)
+        return self.dev.ask(msg)
 
     # CHANNEL 4
     def channelInvert(self, channel, on=True):
